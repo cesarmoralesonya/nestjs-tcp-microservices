@@ -1,24 +1,21 @@
-version: '3.0.0'
+version: '3'
 
 services:
   gateway:
     build: ./gateways/main-gateway
     restart: always
-    hostname: main-gateway
     ports:
       - "5000:5000"
     networks:
       - backend
   service-a:
     build: ./services/service-a
-    restart: always
-    hostname: service-a
+    restart: always    
     networks:
       - backend
   service-b:
     build: ./services/service-b
-    restart: always
-    hostname: service-b    
+    restart: always    
     networks:
       - backend
 networks:

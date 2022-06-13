@@ -4,9 +4,9 @@ export class ConfigService {
   private readonly envConfig: { [key: string]: any } = null;
 
   private readonly serviceAHost =
-    process.env.NODE_ENV === 'production' ? 'service-a' : '0.0.0.0';
+    process.env.NODE_ENV === 'production' ? '0.0.0.0' : '0.0.0.0';
   private readonly serviceBHost =
-    process.env.NODE_ENV === 'production' ? 'service-b' : '0.0.0.0';
+    process.env.NODE_ENV === 'production' ? '0.0.0.0' : '0.0.0.0';
 
   constructor() {
     this.envConfig = {};
