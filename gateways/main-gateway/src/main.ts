@@ -1,8 +1,28 @@
 import { NestFactory } from '@nestjs/core';
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from '@nestjs/platform-fastify';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
+const port = process.env.PORT || 5000;
+
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(8000);
+  const gatewayApp = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter({ logger: true }),
+  );
+
+  const config = new DocumentBuilder()
+    .setTitle('main gateway nestjs tcp microservices')
+    .setDescription('proof of concept microservice with tcp comunication')
+    .setVersion('1.0')
+    .addTag('services')
+    .build();
+  const document = SwaggerModule.createDocument(gatewayApp, config);
+  SwaggerModule.setup('api', gatewayApp, document);
+
+  await gatewayApp.listen(port, '0.0.0.0');
 }
 bootstrap();

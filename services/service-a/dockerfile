@@ -12,7 +12,7 @@ RUN npm install
 
 # Build the app
 COPY ./src ./src
-RUN npm run build:ci
+RUN npm run build:host
 
 #Pruning dev modules from the build
 RUN npm prune --production
@@ -26,8 +26,9 @@ LABEL maintainer="Cesar Morales <cesarmoralesonya@gmail.com>"
 WORKDIR /app
 
 ARG NODE_ENV=production
+ARG NODE_PORT=3000
 ENV NODE_ENV=${NODE_ENV}
-ENV PORT=3000
+ENV PORT=${NODE_PORT}
 
 # Create group app and user app
 RUN addgroup --gid 2000 -S app && adduser --uid 2000 -S app -G app
@@ -40,5 +41,7 @@ USER app
 COPY --from=builder /source/node_modules ./node_modules
 #Copy javascript files to the runtime
 COPY --from=builder /source/dist ./dist
+
+EXPOSE ${NODE_PORT}
 
 CMD [ "node","dist/main" ]

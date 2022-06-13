@@ -1,8 +1,10 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
+import { ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
 
 @Controller('service-b')
+@ApiTags('services')
 export class serviceBController {
   private readonly _serviceBProxy: ClientProxy;
 
