@@ -1,0 +1,21 @@
+{
+    "name": "nestjs-tcp-microservices",
+    "version": "1.0.0",
+    "description": "proof of concept for a microservice using nestjs and tcp communication",
+    "scripts": {        
+        "install:service-a":"cd ./services/service-a && npm install",
+        "install:service-b":"cd ./services/service-b && npm install",
+        "install:main-gateway":"cd ./gateways/main-gateway && npm install",
+        "install": "npm-run-all --parallel install:service-a install:service-b install:main-gateway",
+        "start": "docker compose up"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cesarmoralesonya/nestjs-tcp-microservices.git"
+    },
+    "author": "Cesar Morales",
+    "license": "MIT",
+    "devDependencies": {
+        "npm-run-all": "^4.1.5"
+    }
+}

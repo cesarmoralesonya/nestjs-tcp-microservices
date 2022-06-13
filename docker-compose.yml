@@ -1,0 +1,26 @@
+version: '3.0.0'
+
+services:
+  gateway:
+    build: ./gateways/main-gateway
+    restart: always
+    hostname: main-gateway
+    ports:
+      - "5000:5000"
+    networks:
+      - backend
+  service-a:
+    build: ./services/service-a
+    restart: always
+    hostname: service-a
+    networks:
+      - backend
+  service-b:
+    build: ./services/service-b
+    restart: always
+    hostname: service-b    
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
