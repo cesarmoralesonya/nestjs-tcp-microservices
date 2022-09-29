@@ -7,7 +7,7 @@ import { AppModule } from './app.module';
 
 import { Transport, TcpOptions } from '@nestjs/microservices';
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 async function bootstrap() {
   const mainApp = await NestFactory.create<NestFastifyApplication>(

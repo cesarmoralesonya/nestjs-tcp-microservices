@@ -7,7 +7,9 @@
         "install:service-b":"cd ./services/service-b && npm install",
         "install:main-gateway":"cd ./gateways/main-gateway && npm install",
         "install": "npm-run-all --parallel install:service-a install:service-b install:main-gateway",
-        "start": "docker compose up"
+        "build": "docker-compose -f docker-compose.local.yml --no-cache",
+        "start": "docker compose -f docker-compose.local.yml up",
+        "down": "docker compose -f docker-compose.local.yml down"
     },
     "repository": {
         "type": "git",
