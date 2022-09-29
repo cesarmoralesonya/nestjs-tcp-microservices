@@ -23,6 +23,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(gatewayApp, config);
   SwaggerModule.setup('api', gatewayApp, document);
 
+  console.log(`app listen on port: ${port}`);
   await gatewayApp.listen(port, '0.0.0.0');
 }
 bootstrap();
