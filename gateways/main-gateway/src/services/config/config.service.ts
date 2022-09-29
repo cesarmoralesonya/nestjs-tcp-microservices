@@ -3,10 +3,8 @@ import { Transport } from '@nestjs/microservices';
 export class ConfigService {
   private readonly envConfig: { [key: string]: any } = null;
 
-  private readonly serviceAHost =
-    process.env.NODE_ENV === 'production' ? '0.0.0.0' : '0.0.0.0';
-  private readonly serviceBHost =
-    process.env.NODE_ENV === 'production' ? '0.0.0.0' : '0.0.0.0';
+  private readonly serviceAHost = 'service-a';
+  private readonly serviceBHost = 'service-b';
 
   constructor() {
     this.envConfig = {};
