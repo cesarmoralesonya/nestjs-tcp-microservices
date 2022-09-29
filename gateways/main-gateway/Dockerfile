@@ -26,7 +26,7 @@ LABEL maintainer="Cesar Morales <cesarmoralesonya@gmail.com>"
 WORKDIR /app
 
 ARG NODE_ENV=production
-ARG NODE_PORT=5000
+ARG NODE_PORT=8080
 ENV NODE_ENV=${NODE_ENV}
 ENV PORT=${NODE_PORT}
 
