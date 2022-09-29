@@ -2,19 +2,25 @@ version: '3'
 
 services:
   gateway:
-    build: ./gateways/main-gateway
+    build: 
+      context: gateways/main-gateway
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "5000:5000"
     networks:
       - backend
   service-a:
-    build: ./services/service-a
+    build: 
+      context: services/service-a/
+      dockerfile: Dockerfile
     restart: always    
     networks:
       - backend
   service-b:
-    build: ./services/service-b
+    build:
+      context: services/service-b/
+      dockerfile: Dockerfile
     restart: always    
     networks:
       - backend
