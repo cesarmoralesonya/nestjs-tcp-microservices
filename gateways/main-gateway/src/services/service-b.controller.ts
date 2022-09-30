@@ -14,6 +14,6 @@ export class serviceBController {
 
   @Get()
   getHello(): Observable<string> {
-    return this._serviceBProxy.send('hello', {});
+    return this._serviceBProxy.send('hello', { myData: 'hello from gateway' });
   }
 }

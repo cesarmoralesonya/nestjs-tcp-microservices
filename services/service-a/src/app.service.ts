@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { from, Observable } from 'rxjs';
 
 @Injectable()
 export class AppService {
-  getHello(): Observable<string> {
-    return from(['Hello World! from service A fastify']);
+  public async getHello(): Promise<string> {
+    return Promise.resolve(
+      'Hello World! from service A fastify with env variable:' +
+        process.env.MY_ENV,
+    );
   }
 }

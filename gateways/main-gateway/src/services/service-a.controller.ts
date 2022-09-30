@@ -13,7 +13,7 @@ export class serviceAController {
   }
 
   @Get()
-  getHello(): Observable<string> {
+  public getHello(): Observable<string> {
     return this._serviceAProxy.send('hello', {});
   }
 }

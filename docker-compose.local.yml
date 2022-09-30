@@ -16,6 +16,8 @@ services:
       context: services/service-a/
       dockerfile: Dockerfile
     restart: always    
+    environment:
+      - MY_ENV=FROM DOCKER-COMPOSE
     networks:
       - backend
   service-b:
